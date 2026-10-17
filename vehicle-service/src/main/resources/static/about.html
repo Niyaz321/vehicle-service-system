@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | Risalat Motors</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f4f7f6;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        /* Premium Navbar */
+        .navbar-custom {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .navbar-brand { font-weight: 700; letter-spacing: 1px; }
+        .nav-link { font-weight: 500; transition: color 0.3s; }
+        .nav-link:hover, .nav-link.active { color: #f6c23e !important; }
+
+        /* Custom Buttons */
+        .btn-custom-primary {
+            background-color: #f6c23e; color: #1e3c72; font-weight: 700;
+            border-radius: 50px; padding: 10px 25px; border: none; transition: all 0.3s;
+        }
+        .btn-custom-primary:hover { background-color: #dfad30; transform: translateY(-2px); color: #1e3c72; }
+        .btn-custom-outline {
+            background-color: transparent; color: white; border: 2px solid white;
+            font-weight: 600; border-radius: 50px; padding: 8px 25px; transition: all 0.3s;
+        }
+        .btn-custom-outline:hover { background-color: white; color: #1e3c72; transform: translateY(-2px); }
+
+        /* Page Header */
+        .page-header {
+            background: linear-gradient(rgba(30, 60, 114, 0.9), rgba(42, 82, 152, 0.9)),
+                        url('https://images.unsplash.com/photo-1625047509168-a71c6f9470ce?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80') center/cover;
+            padding: 80px 0;
+            color: white;
+            text-align: center;
+        }
+        .page-title { font-weight: 800; text-transform: uppercase; letter-spacing: 2px; }
+
+        /* About Section */
+        .about-image {
+            border-radius: 15px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+            transition: transform 0.3s;
+        }
+        .about-image:hover { transform: scale(1.02); }
+        .text-primary-custom { color: #1e3c72; font-weight: 700; }
+
+        /* Value Cards */
+        .value-card {
+            background: white; border-radius: 12px; padding: 30px; text-align: center;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05); height: 100%; transition: transform 0.3s;
+        }
+        .value-card:hover { transform: translateY(-8px); box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
+        .value-icon { font-size: 2.5rem; color: #f6c23e; margin-bottom: 20px; }
+
+        /* Modern Footer */
+        .footer-custom { background-color: #1a1a1a; color: #ccc; padding: 50px 0 20px; }
+        .footer-title { color: white; font-weight: 600; margin-bottom: 20px; position: relative; display: inline-block; }
+        .footer-title::after { content: ''; position: absolute; left: 0; bottom: -5px; width: 40px; height: 2px; background-color: #f6c23e; }
+        .footer-link { color: #ccc; text-decoration: none; transition: color 0.3s; display: block; margin-bottom: 10px; }
+        .footer-link:hover { color: #f6c23e; padding-left: 5px; }
+    </style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark navbar-custom py-3 sticky-top">
+    <div class="container">
+        <a class="navbar-brand" href="index.html">
+            <i class="fas fa-car-side me-2 text-warning"></i> Risalat Motors
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav mx-auto">
+                <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                <li class="nav-item"><a class="nav-link active" href="about.html">About</a></li>
+                <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
+                <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+            </ul>
+            <div class="d-flex">
+                <a href="login.html" class="btn btn-custom-outline me-2"><i class="fas fa-sign-in-alt me-1"></i> Login</a>
+                <a href="register.html" class="btn btn-custom-primary"><i class="fas fa-user-plus me-1"></i> Register</a>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<section class="page-header">
+    <div class="container">
+        <h1 class="page-title">About Us</h1>
+        <p class="lead">Discover the story and passion behind Risalat Motors.</p>
+    </div>
+</section>
+
+<section class="py-5">
+    <div class="container py-4">
+        <div class="row align-items-center g-5">
+            <div class="col-lg-6">
+                <img src="https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80" alt="Workshop" class="img-fluid about-image">
+            </div>
+            <div class="col-lg-6">
+                <h6 class="text-warning fw-bold text-uppercase tracking-wider">Our Story</h6>
+                <h2 class="text-primary-custom mb-4">Driving Excellence in Every Service</h2>
+                <p class="text-muted mb-4">Established with a vision to revolutionize the automobile service industry, Risalat Motors bridges the gap between traditional mechanics and modern digital convenience. We believe in providing a seamless, transparent, and high-quality service experience.</p>
+                <p class="text-muted mb-4">Our online platform allows you to book appointments, track progress in real-time, and maintain a complete digital history of your vehicle's health. Your trust is our ultimate driving force.</p>
+
+                <div class="row mt-4">
+                    <div class="col-sm-6 mb-3">
+                        <h3 class="text-primary-custom fw-bold">5+</h3>
+                        <p class="text-muted small fw-bold text-uppercase">Years Experience</p>
+                    </div>
+                    <div class="col-sm-6 mb-3">
+                        <h3 class="text-primary-custom fw-bold">1000+</h3>
+                        <p class="text-muted small fw-bold text-uppercase">Happy Customers</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="py-5 bg-light">
+    <div class="container py-4">
+        <div class="text-center mb-5">
+            <h2 class="text-primary-custom">Our Core Values</h2>
+            <p class="text-muted">What makes us the preferred choice for your vehicle.</p>
+        </div>
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="value-card">
+                    <i class="fas fa-shield-alt value-icon"></i>
+                    <h5 class="fw-bold mb-3">Trust & Transparency</h5>
+                    <p class="text-muted small">We ensure clear communication about pricing and repairs before we start any work on your vehicle.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="value-card">
+                    <i class="fas fa-stopwatch value-icon"></i>
+                    <h5 class="fw-bold mb-3">On-Time Delivery</h5>
+                    <p class="text-muted small">We value your time. Our streamlined digital booking system ensures your car is ready exactly when promised.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="value-card">
+                    <i class="fas fa-tools value-icon"></i>
+                    <h5 class="fw-bold mb-3">Quality Workmanship</h5>
+                    <p class="text-muted small">From original spare parts to certified mechanics, we never compromise on the quality of our service.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer class="footer-custom">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 mb-4">
+                <h4 class="text-white fw-bold mb-4"><i class="fas fa-car-side text-warning me-2"></i> Risalat Motors</h4>
+                <p class="small text-muted mb-4">Delivering excellence in vehicle maintenance. Your trusted partner for seamless and transparent automobile servicing.</p>
+            </div>
+            <div class="col-lg-2 col-md-6 mb-4">
+                <h5 class="footer-title">Quick Links</h5>
+                <a href="index.html" class="footer-link">Home</a>
+                <a href="about.html" class="footer-link">About Us</a>
+                <a href="services.html" class="footer-link">Services</a>
+                <a href="contact.html" class="footer-link">Contact</a>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-4">
+                <h5 class="footer-title">Our Services</h5>
+                <a href="#" class="footer-link">General Maintenance</a>
+                <a href="#" class="footer-link">Engine Diagnostics</a>
+                <a href="#" class="footer-link">Denting & Painting</a>
+            </div>
+            <div class="col-lg-3 mb-4">
+                <h5 class="footer-title">Contact Info</h5>
+                <p class="small mb-2"><i class="fas fa-map-marker-alt me-2 text-warning"></i> Maharashtra College, Mumbai 400008</p>
+                <p class="small mb-2"><i class="fas fa-phone me-2 text-warning"></i> +91 9004332824</p>
+                <p class="small mb-0"><i class="fas fa-envelope me-2 text-warning"></i> support@risalatmotors.com</p>
+            </div>
+        </div>
+        <hr class="border-secondary mt-4 mb-3">
+        <div class="text-center small">
+            <p class="mb-0">&copy; 2026 Risalat Motors. All rights reserved. Designed for Enterprise.</p>
+        </div>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

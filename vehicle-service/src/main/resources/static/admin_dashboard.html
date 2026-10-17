@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Command Center | Risalat Motors</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f4f7f6;
+            color: #333;
+        }
+        /* Premium Navbar */
+        .navbar-custom {
+            background: linear-gradient(135deg, #111827 0%, #1f2937 100%); /* Darker for Admin */
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+        .navbar-brand { font-weight: 700; letter-spacing: 1px; color: #f6c23e !important; }
+
+        /* Dashboard Header */
+        .dashboard-header {
+            background-color: #fff;
+            padding: 20px 30px;
+            border-radius: 12px;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+            margin-bottom: 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-left: 5px solid #f6c23e;
+        }
+        .welcome-text h4 { font-weight: 700; margin: 0; color: #111827; }
+
+        /* Stats Cards */
+        .stat-card {
+            border: none; border-radius: 12px; transition: transform 0.3s; color: #fff;
+        }
+        .stat-card:hover { transform: translateY(-5px); }
+        .bg-gradient-blue { background: linear-gradient(45deg, #1e3c72, #2a5298); }
+        .bg-gradient-gold { background: linear-gradient(45deg, #f6c23e, #dfad30); color: #111827 !important; }
+        .bg-gradient-dark { background: linear-gradient(45deg, #374151, #111827); }
+
+        /* Form & Table Cards */
+        .premium-card {
+            border: none; border-radius: 12px; box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            background: #fff; overflow: hidden; margin-bottom: 25px;
+        }
+        .premium-card-header {
+            background-color: #f8f9fc; border-bottom: 1px solid #e3e6f0;
+            padding: 15px 20px; font-weight: 600; color: #111827;
+            display: flex; justify-content: space-between; align-items: center;
+        }
+        .form-control {
+            border-radius: 8px; padding: 10px 15px; border: 1px solid #d1d3e2; background-color: #f8f9fc;
+        }
+        .form-control:focus { box-shadow: 0 0 0 0.2rem rgba(246, 194, 62, 0.25); border-color: #f6c23e; background-color: #fff; }
+
+        .btn-custom-dark {
+            background-color: #111827; color: white; border-radius: 8px;
+            padding: 10px; font-weight: 500; transition: all 0.3s;
+        }
+        .btn-custom-dark:hover { background-color: #374151; color: #f6c23e; }
+
+        /* Custom Table */
+        .table { margin-bottom: 0; font-size: 0.9rem; }
+        .table thead th {
+            border-bottom: none; background-color: #f8f9fc; color: #6b7280;
+            font-weight: 600; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 0.5px;
+        }
+        .table tbody td { vertical-align: middle; color: #374151; }
+        .form-select-sm { border-radius: 6px; font-size: 0.85rem; }
+
+        /* Badges */
+        .badge-pending { background-color: #fef3c7; color: #92400e; border: 1px solid #fde68a; }
+        .badge-progress { background-color: #e0f2fe; color: #0369a1; border: 1px solid #bae6fd; }
+        .badge-completed { background-color: #d1fae5; color: #065f46; border: 1px solid #a7f3d0; }
+    </style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark navbar-custom py-3">
+    <div class="container-fluid px-4">
+        <a class="navbar-brand" href="#"><i class="fas fa-tools me-2"></i> Admin Panel | Risalat Motors</a>
+        <div class="d-flex align-items-center">
+            <span class="text-light me-3"><i class="fas fa-user-shield me-1 text-warning"></i> <span id="adminName">Admin</span></span>
+            <button class="btn btn-outline-warning btn-sm rounded-pill px-3" onclick="logout()"><i class="fas fa-sign-out-alt me-1"></i> Logout</button>
+        </div>
+    </div>
+</nav>
+
+<div class="container-fluid px-4 mt-4 mb-5">
+
+    <div class="dashboard-header">
+        <div class="welcome-text">
+            <h4>Command Center Overview</h4>
+            <p class="text-muted mb-0 small">Manage bookings, mechanics, and services from one place.</p>
+        </div>
+        <div>
+            <span class="badge bg-dark px-3 py-2 rounded-pill"><i class="fas fa-circle text-success me-1 small"></i> System Online</span>
+        </div>
+    </div>
+
+    <div class="row mb-4">
+        <div class="col-md-4">
+            <div class="card stat-card bg-gradient-blue p-3 shadow-sm">
+                <div class="card-body d-flex justify-content-between align-items-center">
+                    <div>
+                        <h6 class="text-uppercase mb-1 opacity-75 small fw-bold">Total Bookings</h6>
+                        <h2 class="mb-0 fw-bold" id="totalBookingsStat">0</h2>
+                    </div>
+                    <i class="fas fa-calendar-check fa-3x opacity-50"></i>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card stat-card bg-gradient-gold p-3 shadow-sm">
+                <div class="card-body d-flex justify-content-between align-items-center">
+                    <div>
+                        <h6 class="text-uppercase mb-1 opacity-75 small fw-bold">Mechanics Available</h6>
+                        <h2 class="mb-0 fw-bold" id="totalMechanicsStat">0</h2>
+                    </div>
+                    <i class="fas fa-users-cog fa-3x opacity-50"></i>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card stat-card bg-gradient-dark p-3 shadow-sm">
+                <div class="card-body d-flex justify-content-between align-items-center">
+                    <div>
+                        <h6 class="text-uppercase mb-1 opacity-75 small fw-bold">Active Services</h6>
+                        <h2 class="mb-0 fw-bold" id="totalServicesStat">0</h2>
+                    </div>
+                    <i class="fas fa-cogs fa-3x opacity-50"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-3">
+
+            <div class="premium-card">
+                <div class="premium-card-header">
+                    <span><i class="fas fa-user-plus me-2 text-primary"></i> Add Mechanic</span>
+                </div>
+                <div class="card-body">
+                    <form id="mechanicForm">
+                        <div class="mb-3">
+                            <input type="text" id="mechName" class="form-control" placeholder="Mechanic Name" required>
+                        </div>
+                        <div class="mb-3">
+                            <input type="text" id="mechSpecialty" class="form-control" placeholder="Specialty (e.g. Engine, AC)" required>
+                        </div>
+                        <button type="submit" class="btn btn-custom-dark w-100 shadow-sm"><i class="fas fa-plus-circle me-1"></i> Save Mechanic</button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="premium-card">
+                <div class="premium-card-header">
+                    <span><i class="fas fa-tags me-2 text-success"></i> Add New Service</span>
+                </div>
+                <div class="card-body">
+                    <form id="serviceForm">
+                        <div class="mb-3">
+                            <input type="text" id="servName" class="form-control" placeholder="Service Name" required>
+                        </div>
+                        <div class="mb-3">
+                            <input type="number" id="servPrice" class="form-control" placeholder="Price (₹)" required>
+                        </div>
+                        <button type="submit" class="btn btn-custom-dark w-100 shadow-sm"><i class="fas fa-plus-circle me-1"></i> Save Service</button>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="col-lg-9">
+            <div class="premium-card h-100">
+                <div class="premium-card-header">
+                    <span><i class="fas fa-tasks me-2 text-warning"></i> Customer Bookings Management</span>
+                    <button class="btn btn-sm btn-outline-dark rounded-pill" onclick="loadDashboardData()"><i class="fas fa-sync-alt"></i> Refresh</button>
+                </div>
+                <div class="card-body p-0">
+                    <div class="table-responsive">
+                        <table class="table table-hover align-middle">
+                            <thead>
+                            <tr>
+                                <th class="ps-4">ID</th>
+                                <th>Customer Info</th>
+                                <th>Vehicle & Service</th>
+                                <th>Date</th>
+                                <th>Status</th>
+                                <th>Assign Mechanic</th>
+                                <th>Action</th>
+                            </tr>
+                            </thead>
+                            <tbody id="allBookingsTable">
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // 1. Check Admin Login
+    const user = JSON.parse(localStorage.getItem("user"));
+    if (!user || user.role !== 'ADMIN') {
+        alert("Access Denied! Only Admins can view this page.");
+        window.location.href = "login.html";
+    }
+    document.getElementById("adminName").innerText = user.name;
+
+    let allMechanics = [];
+
+    // 2. Master Load Function
+    async function loadDashboardData() {
+        try {
+            // Load Mechanics
+            const mechRes = await fetch('/api/admin/mechanics');
+            allMechanics = await mechRes.json();
+            document.getElementById("totalMechanicsStat").innerText = allMechanics.length;
+
+            // Load Services for Stat
+            const servRes = await fetch('/api/admin/services');
+            const services = await servRes.json();
+            document.getElementById("totalServicesStat").innerText = services.length;
+
+            // Load Bookings
+            const bookRes = await fetch('/api/bookings');
+            const bookings = await bookRes.json();
+            document.getElementById("totalBookingsStat").innerText = bookings.length;
+
+            renderBookingsTable(bookings);
+        } catch (error) {
+            console.error("Error loading dashboard data", error);
+        }
+    }
+
+    // 3. Render Table
+    function renderBookingsTable(bookings) {
+        const tbody = document.getElementById("allBookingsTable");
+        tbody.innerHTML = "";
+
+        // Reverse to show latest bookings first
+        bookings.reverse().forEach(b => {
+            // Dropdown for Mechanics
+            let mechOptions = `<option value="">-- Select --</option>`;
+            allMechanics.forEach(m => {
+                const selected = (b.mechanic && b.mechanic.id === m.id) ? "selected" : "";
+                mechOptions += `<option value="${m.id}" ${selected}>${m.name} (${m.specialty})</option>`;
+            });
+
+            // Status Badge Logic for visual cue
+            let badgeClass = 'badge-pending';
+            if(b.status === 'IN_PROGRESS') badgeClass = 'badge-progress';
+            if(b.status === 'COMPLETED') badgeClass = 'badge-completed';
+
+            const row = `<tr>
+                <td class="ps-4 fw-bold text-muted">#${b.id}</td>
+                <td>
+                    <strong>${b.user ? b.user.name : 'Unknown'}</strong><br>
+                    <small class="text-muted"><i class="fas fa-phone-alt small"></i> ${b.user && b.user.phone ? b.user.phone : 'N/A'}</small>
+                </td>
+                <td>
+                    <span class="text-dark fw-medium">${b.vehicleNumber}</span><br>
+                    <span class="badge bg-light text-dark border">${b.service ? b.service.name : 'Unknown'}</span>
+                </td>
+                <td class="small fw-medium">${b.bookingDate}</td>
+                <td>
+                    <select id="status-${b.id}" class="form-select form-select-sm shadow-sm ${badgeClass}">
+                        <option value="PENDING" ${b.status==='PENDING'?'selected':''}>PENDING</option>
+                        <option value="IN_PROGRESS" ${b.status==='IN_PROGRESS'?'selected':''}>IN PROGRESS</option>
+                        <option value="COMPLETED" ${b.status==='COMPLETED'?'selected':''}>COMPLETED</option>
+                    </select>
+                </td>
+                <td>
+                    <select id="mech-${b.id}" class="form-select form-select-sm shadow-sm">
+                        ${mechOptions}
+                    </select>
+                </td>
+                <td>
+                    <button class="btn btn-primary btn-sm rounded shadow-sm w-100" id="btnUpdate-${b.id}" onclick="updateBooking(${b.id})">
+                        Save
+                    </button>
+                </td>
+            </tr>`;
+            tbody.innerHTML += row;
+        });
+    }
+
+    // 4. Update Booking Function
+    async function updateBooking(id) {
+        const btn = document.getElementById(`btnUpdate-${id}`);
+        const originalText = btn.innerHTML;
+        btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
+        btn.disabled = true;
+
+        const status = document.getElementById(`status-${id}`).value;
+        const mechanicId = document.getElementById(`mech-${id}`).value;
+
+        try {
+            const response = await fetch(`/api/admin/bookings/${id}?status=${status}&mechanicId=${mechanicId}`, {
+                method: 'PUT'
+            });
+
+            if (response.ok) {
+                btn.classList.replace('btn-primary', 'btn-success');
+                btn.innerHTML = '<i class="fas fa-check"></i>';
+                setTimeout(() => { loadDashboardData(); }, 1000); // Refresh data
+            } else {
+                throw new Error("Failed");
+            }
+        } catch (error) {
+            alert("Failed to update booking!");
+            btn.innerHTML = originalText;
+            btn.disabled = false;
+        }
+    }
+
+    // 5. Add Mechanic Logic
+    document.getElementById("mechanicForm").addEventListener("submit", async function(e) {
+        e.preventDefault();
+        const btn = this.querySelector('button');
+        btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Saving...';
+
+        const mech = {
+            name: document.getElementById("mechName").value,
+            specialty: document.getElementById("mechSpecialty").value
+        };
+        await fetch('/api/admin/mechanics', {
+            method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify(mech)
+        });
+
+        this.reset();
+        btn.innerHTML = '<i class="fas fa-plus-circle me-1"></i> Save Mechanic';
+        loadDashboardData(); // Refresh list & stats
+    });
+
+    // 6. Add Service Logic
+    document.getElementById("serviceForm").addEventListener("submit", async function(e) {
+        e.preventDefault();
+        const btn = this.querySelector('button');
+        btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Saving...';
+
+        const serv = {
+            name: document.getElementById("servName").value,
+            price: document.getElementById("servPrice").value
+        };
+        await fetch('/api/admin/services', {
+            method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify(serv)
+        });
+
+        this.reset();
+        btn.innerHTML = '<i class="fas fa-plus-circle me-1"></i> Save Service';
+        loadDashboardData(); // Refresh list & stats
+    });
+
+    function logout() {
+        localStorage.removeItem("user");
+        window.location.href = "login.html";
+    }
+
+    // Initial Load
+    loadDashboardData();
+</script>
+
+</body>
+</html>

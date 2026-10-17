@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Services | Risalat Motors</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f4f7f6;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        /* Premium Navbar */
+        .navbar-custom {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .navbar-brand { font-weight: 700; letter-spacing: 1px; }
+        .nav-link { font-weight: 500; transition: color 0.3s; }
+        .nav-link:hover, .nav-link.active { color: #f6c23e !important; }
+
+        /* Custom Buttons */
+        .btn-custom-primary {
+            background-color: #f6c23e; color: #1e3c72; font-weight: 700;
+            border-radius: 50px; padding: 10px 25px; border: none; transition: all 0.3s;
+        }
+        .btn-custom-primary:hover { background-color: #dfad30; transform: translateY(-2px); color: #1e3c72; }
+        .btn-custom-outline {
+            background-color: transparent; color: white; border: 2px solid white;
+            font-weight: 600; border-radius: 50px; padding: 8px 25px; transition: all 0.3s;
+        }
+        .btn-custom-outline:hover { background-color: white; color: #1e3c72; transform: translateY(-2px); }
+
+        /* Page Header */
+        .page-header {
+            background: linear-gradient(rgba(30, 60, 114, 0.9), rgba(42, 82, 152, 0.9)),
+                        url('https://images.unsplash.com/photo-1632823462943-424a683ec245?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80') center/cover;
+            padding: 80px 0;
+            color: white;
+            text-align: center;
+        }
+        .page-title { font-weight: 800; text-transform: uppercase; letter-spacing: 2px; }
+
+        /* Service Cards */
+        .service-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px 20px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(30, 60, 114, 0.15);
+            border-color: #1e3c72;
+        }
+        .service-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #f8f9fc 0%, #e3e6f0 100%);
+            color: #1e3c72;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 2.2rem;
+            transition: all 0.3s;
+        }
+        .service-card:hover .service-icon {
+            background: #1e3c72;
+            color: #f6c23e;
+            transform: scale(1.1);
+        }
+        .price-badge {
+            background-color: #f8f9fc;
+            color: #1e3c72;
+            font-weight: 800;
+            font-size: 1.3rem;
+            padding: 10px 20px;
+            border-radius: 50px;
+            display: inline-block;
+            margin: 15px 0;
+            border: 2px dashed #d1d3e2;
+        }
+        .service-card:hover .price-badge {
+            border-color: #f6c23e;
+            background-color: #fff9e6;
+        }
+
+        /* Modern Footer */
+        .footer-custom { background-color: #1a1a1a; color: #ccc; padding: 50px 0 20px; }
+        .footer-title { color: white; font-weight: 600; margin-bottom: 20px; position: relative; display: inline-block; }
+        .footer-title::after { content: ''; position: absolute; left: 0; bottom: -5px; width: 40px; height: 2px; background-color: #f6c23e; }
+        .footer-link { color: #ccc; text-decoration: none; transition: color 0.3s; display: block; margin-bottom: 10px; }
+        .footer-link:hover { color: #f6c23e; padding-left: 5px; }
+    </style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark navbar-custom py-3 sticky-top">
+    <div class="container">
+        <a class="navbar-brand" href="index.html">
+            <i class="fas fa-car-side me-2 text-warning"></i> Risalat Motors
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav mx-auto">
+                <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                <li class="nav-item"><a class="nav-link active" href="services.html">Services</a></li>
+                <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+            </ul>
+            <div class="d-flex">
+                <a href="login.html" class="btn btn-custom-outline me-2"><i class="fas fa-sign-in-alt me-1"></i> Login</a>
+                <a href="register.html" class="btn btn-custom-primary"><i class="fas fa-user-plus me-1"></i> Register</a>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<section class="page-header">
+    <div class="container">
+        <h1 class="page-title">Our Premium Services</h1>
+        <p class="lead">Top-tier maintenance and repair solutions for your vehicle.</p>
+    </div>
+</section>
+
+<section class="py-5">
+    <div class="container py-4">
+        <div class="text-center mb-5">
+            <h6 class="text-warning fw-bold text-uppercase tracking-wider">What We Offer</h6>
+            <h2 class="fw-bold" style="color: #1e3c72;">Choose Your Service Package</h2>
+        </div>
+
+        <div class="row g-4">
+            <div class="col-lg-4 col-md-6">
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-tools"></i></div>
+                    <h4 class="fw-bold" style="color: #1e3c72;">General Service</h4>
+                    <p class="text-muted small px-2 mt-3">Complete checkup, oil change, filter replacement, fluid top-ups, and thorough washing.</p>
+                    <div class="price-badge">₹1,500</div>
+                    <a href="login.html" class="btn btn-outline-primary w-100 rounded-pill fw-bold mt-2">Book Now <i class="fas fa-arrow-right ms-1"></i></a>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6">
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-spray-can"></i></div>
+                    <h4 class="fw-bold" style="color: #1e3c72;">Denting & Painting</h4>
+                    <p class="text-muted small px-2 mt-3">Professional scratch removal, full body painting, premium wax, and high-gloss polish.</p>
+                    <div class="price-badge">₹3,000</div>
+                    <a href="login.html" class="btn btn-outline-primary w-100 rounded-pill fw-bold mt-2">Book Now <i class="fas fa-arrow-right ms-1"></i></a>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6">
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-laptop-medical"></i></div>
+                    <h4 class="fw-bold" style="color: #1e3c72;">Engine Diagnostics</h4>
+                    <p class="text-muted small px-2 mt-3">Advanced OBD-II computer scanning for engine health, sensor checks, and precise repairs.</p>
+                    <div class="price-badge">₹5,000</div>
+                    <a href="login.html" class="btn btn-outline-primary w-100 rounded-pill fw-bold mt-2">Book Now <i class="fas fa-arrow-right ms-1"></i></a>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6">
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-snowflake"></i></div>
+                    <h4 class="fw-bold" style="color: #1e3c72;">AC Service & Repair</h4>
+                    <p class="text-muted small px-2 mt-3">AC gas top-up, cooling coil cleaning, leak detection, and cabin filter replacement.</p>
+                    <div class="price-badge">₹2,000</div>
+                    <a href="login.html" class="btn btn-outline-primary w-100 rounded-pill fw-bold mt-2">Book Now <i class="fas fa-arrow-right ms-1"></i></a>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6">
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-dharmachakra"></i></div>
+                    <h4 class="fw-bold" style="color: #1e3c72;">Wheel Alignment</h4>
+                    <p class="text-muted small px-2 mt-3">Computerized wheel alignment, balancing, tire rotation, and pressure optimization.</p>
+                    <div class="price-badge">₹800</div>
+                    <a href="login.html" class="btn btn-outline-primary w-100 rounded-pill fw-bold mt-2">Book Now <i class="fas fa-arrow-right ms-1"></i></a>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6">
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-shower"></i></div>
+                    <h4 class="fw-bold" style="color: #1e3c72;">Complete Car Wash</h4>
+                    <p class="text-muted small px-2 mt-3">Deep interior vacuuming, dashboard polish, foam wash, and underbody cleaning.</p>
+                    <div class="price-badge">₹500</div>
+                    <a href="login.html" class="btn btn-outline-primary w-100 rounded-pill fw-bold mt-2">Book Now <i class="fas fa-arrow-right ms-1"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer class="footer-custom">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 mb-4">
+                <h4 class="text-white fw-bold mb-4"><i class="fas fa-car-side text-warning me-2"></i> Risalat Motors</h4>
+                <p class="small text-muted mb-4">Delivering excellence in vehicle maintenance. Your trusted partner for seamless and transparent automobile servicing.</p>
+                <div class="d-flex gap-3">
+                    <a href="#" class="text-white fs-5"><i class="fab fa-facebook"></i></a>
+                    <a href="#" class="text-white fs-5"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="text-white fs-5"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-6 mb-4">
+                <h5 class="footer-title">Quick Links</h5>
+                <a href="index.html" class="footer-link">Home</a>
+                <a href="about.html" class="footer-link">About Us</a>
+                <a href="services.html" class="footer-link">Services</a>
+                <a href="contact.html" class="footer-link">Contact</a>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-4">
+                <h5 class="footer-title">Our Services</h5>
+                <a href="#" class="footer-link">General Maintenance</a>
+                <a href="#" class="footer-link">Engine Diagnostics</a>
+                <a href="#" class="footer-link">Denting & Painting</a>
+            </div>
+            <div class="col-lg-3 mb-4">
+                <h5 class="footer-title">Contact Info</h5>
+                <p class="small mb-2"><i class="fas fa-map-marker-alt me-2 text-warning"></i> Maharashtra College, Mumbai 400008</p>
+                <p class="small mb-2"><i class="fas fa-phone me-2 text-warning"></i> +91 9004332824</p>
+                <p class="small mb-0"><i class="fas fa-envelope me-2 text-warning"></i> support@risalatmotors.com</p>
+            </div>
+        </div>
+        <hr class="border-secondary mt-4 mb-3">
+        <div class="text-center small">
+            <p class="mb-0">© 2026 Risalat Motors. All rights reserved. Designed for Enterprise.</p>
+        </div>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
